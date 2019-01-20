@@ -1,0 +1,147 @@
+\def\year{2017}\relax
+%File: formatting-instruction.tex
+\documentclass[letterpaper]{article}
+\usepackage{aaai17}
+\usepackage{times}
+\usepackage{helvet}
+\usepackage{courier}
+\frenchspacing
+\setlength{\pdfpagewidth}{8.5in}
+\setlength{\pdfpageheight}{11in}
+\pdfinfo{
+/Title (Interactive Machine Learning for End-user Innovation)
+/Author (Francisco Bernardo)
+/Author (Michael Zbyszynski)
+/Author (Rebecca Fiebrink)
+/Author (Mick Grierson)
+}
+\setcounter{secnumdepth}{0}  
+\title{Interactive Machine Learning for End-User Innovation}
+\author{Francisco Bernardo, Michael Zbyszy\'{n}ski, Rebecca Fiebrink and Mick Grierson\\
+Goldsmiths University of London\\
+Department of Computing\\
+London, UK\\
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+User interaction with intelligent systems need not be limited to interaction where pre-trained software has intelligence ``baked in''. End-user training, including interactive machine learning (IML) approaches, can enable users to create and customise systems themselves. We propose that the user experience of these end users is worth considering. Furthermore, the user experience of system developers--people who may train and configure both learning algorithms and user interfaces to be used by end users--also deserves attention. We additionally propose that IML can improve user experiences by supporting user-centred design processes; at the same time, there is a further role for user-centred design to play in improving interactive and classical machine learning systems. We have developed this approach in the context of the European Commission-funded project, RAPID-MIX, where they are embodied in the design of a new User Innovation Toolkit.\end{abstract}
+
+\section{Introduction}
+When considering the user experience of machine learning systems, it is important to consider the experiences of users designing, training, evaluating, and refining machine learning systems. Sometimes, such users are ``end users'' of software tools--artists, musicians, people with disabilities, hackers and makers, people applying machine learning to ``quantified self'' monitoring or to creating new smart home applications. Interactive machine learning (IML) approaches can enable such users to create and customise machine learning applications. Fails and Olsen \citeyear{fails2003interactive} define IML as a new machine-learning paradigm with a workflow that features rapid cycles of training and corrective feedback of classifiers with human supervision. In the simplest case, users can interact with the machine learning process by providing training examples (e.g., examples of a human action or activity, alongside the label that a classifier should apply to that action/activity). 
+
+In this paper, we describe how IML can support new types of end-user customisation, which can be understood in terms of end-user programming \cite{lieberman2006end} or as user innovation toolkits \cite{von2005democratizing}. We describe considerations and challenges for supporting user experience in this context. Further, we describe a similar context, that of system developers employing machine learning to create intelligent systems for use by others. These developers are also ``users'' of machine learning tools, and the tools they use impact the systems that can be built and the types of experiences that are possible for their end users. 
+
+We also describe how interactive machine learning and user-centred design processes may inform each other. User-Centred design (UCD), which was originally coined by Norman and Draper \citeyear{norman1986user}, is a process based upon the understanding of users, their tasks and environments; it involves the user at an early stage of project development and throughout the project lifetime. In UCD, the design is driven and refined throughout an iterative cycle of development and user-centred evaluation. Interactive machine learning provides a set of mechanisms to support user-centred design, by making it possible to translate users' demonstrations or observations of user actions into training examples that are used to build or refine a new technology. At the same time, user-centred design can and should play a role in the design of interactive and classical machine learning systems, whether aimed at developers or end users. 
+
+The final section of our paper describes RAPID-MIX, a design project that aims to place next-generation machine learning tools in the hands of end users in the form of a User Innovation Toolkit. We describe the aims of this project and the methodologies we have employed to understand and improve the user experiences of both end users and professional developers using machine learning to build new interactive systems.
+
+\section{Claims}
+\subsection{Interactive machine learning can enable end users to customise systems.} 
+As described above, IML can make it possible for end users to create customised systems. Typically, IML users  provide training examples or labels iteratively, or adjust learning parameters to ``steer'' a machine-learned model toward a desired behaviour. A user interface for IML may enable users who have domain expertise (but possibly no machine learning expertise) to provide training examples \cite{fiebrink2011real,fails2003interactive}, adjust misclassification costs \cite{kapoor2010interactive}, adjust weightings of component classifiers in an ensemble system \cite{talbot2009ensemblematrix}, or take other actions. This approach can be used to create simple computer vision classifiers \cite{fails2003interactive}, new sensor-based interactions \cite{hartmann2007authoring}, customised gestural controllers including new musical instruments \cite{fiebrink2011real}, customised alerts \cite{amershi2011cuet}, and potentially many other bespoke systems.
+
+Amershi, Cakmak, Knox, and Kulesza \citeyear{amershi2014power} describe the IML workflow as more rapid, more focused and incremental when compared to classic machine learning (CML), which can be a laborious, and sometimes inefficient process. IML can also offer users without machine learning or programming expertise an effective way to customise systems, since their natural interactions can be used as training examples, and organised through a user interface. The iterative nature of IML means that these same actions can be used to improve systems. For instance, a user can provide additional examples of an action that was misclassified by a trained model, along with the correct label for this action, and reasonably hope that the next model trained on the augmented training set may improve its performance on this type of action. 
+
+IML can thus be understood as a tool for end-user programming, as well as a way to ``democratise'' machine learning, making the benefits of learning algorithms realisable by a wider range of people. Talbot et al. observe that ``a critical human-computer interaction challenge is to provide adequate tools to allow non-experts to wield [machine learning] techniques effectively. In order to design these tools, we must start at current best practices in applied machine learning and identify tasks that can be supported or augmented by an effective combination of human intuition and input with machine processing" (p. 1283).%I think you need to follow this quote up with a comment
+
+%With the increasing and widespread application of machine learning, the HCI community faces the challenge of providing adequate tools that allow for the democratization of ML. 
+
+% MG: I'm not sure that this part about User Innovation Toolkits doesn't muddy the waters a little. But could be convinced
+%IML can also be used as a way to support the development of \textit{User Innovation Toolkits}. Such toolkits are defined by von Hippel \citeyear{von2005democratizing} as ``integrated sets of product-design, prototyping, and design-testing tools intended for use by end users.'' These tools enable end users to ``design high-quality, producible custom products that exactly meet their needs'' (p. 163). Certain users---termed ``lead users'' by von Hippel \citeyear{von1986lead}---may be well-positioned anticipate general demand and identify specific market needs for new products. User innovation toolkits enable lead users to develop innovative solutions that can fulfil their own needs, and some of these solutions may eventually see mass adoption by the community. Industry may be less well-positioned to achieve this innovation, as need and context-of-use information (``sticky'' information) may be located at the users’ site and may be very costly for the manufacturer to acquire, transfer, and ultimately use. von Hippel argues that placing the locus of problem solving on the side of the users gives them the potential to innovate in the most valuable directions. 
+
+IML can therefore be seen as a set of techniques to enable end users to design new interactions with building blocks provided by industry. For instance, it allows users to create bespoke classifiers or controllers from sensors, and to use these to control systems for gaming, music, smart homes, etc. And such as the seminal example of user innovation toolkits for custom integrated circuit (IC) design industry \cite{hippel2001user} -- which solved a great inefficiency problem, i.e failing to understand the user needs accurately and in detail at the start of a product design project, by allowing users to design their own circuits by themselves. An IML user innovation toolkit can provide for users to customise their designs while addressing inefficiencies in software development, in an analogous way that software design tools were used to do the same for hardware development in the IC industry.
+
+%TODO: Francisco; Can we put something about ICs in paragraph above?
+
+%FB: Added it, pages 38-39 and 59 of my upgrade  have more info if you'd like to expand
+
+
+%TODO: elsewhere?
+%The importance of designing for user innovation is supported by the evidence of an increasing level of user involvement in innovative activities in the UK (Flowers, von Hippel, De Jong and Sinozic \citeyear{flowers2010measuring}) and around the world (Lindtner et al. \citeyear{lindtner2014emerging}). These trends in innovation motivate our approach of directing UCD efforts to the design of a toolkit for application in rapid prototyping and product development for companies of the creative industries, and for user communities, such as artists, academic researchers, hackers, makers, and creative technology companies. A user-friendly toolkit should provide creative freedom and facilitate exploration; it should also be adaptive in the sense that it should  allows easy deployment and integration of the desired IML features in the end-user applications.
+
+Based on work by Fiebrink and collaborators \cite{fiebrink2011human,fiebrink2010toward,fiebrink2011real}, we argue that using IML for user innovation toolkits can provide the following advantages:
+\begin{itemize}
+\item IML can be used by people without programming or machine learning expertise
+\item IML can facilitate rapid prototyping and iterative refinement activities which are known to be important to design of new systems
+\item Providing training examples can be a direct and effective way for a user to communicate the desired behaviour of a system, particularly when designing a system to recognise or respond to human actions. Even expert programmers may have difficulty expressing in program code how an embodied activity is to be analysed, but may be able to easily demonstrate an example of the activity.
+\end{itemize}
+
+At the same time, designing effective approaches for end-user innovation with IML presents several challenges, including: 
+\begin{itemize}
+\item It may be hard for users to reason how well a system will work in the future. Fiebrink et al \citeyear{fiebrink2011human} show that conventional metrics of quality computed from the training data (e.g., cross-validation) aren't appropriate for IML systems in which the user employs training data to steer the model behaviour. It may not be clear how to assess whether a model is trustworthy, how to identify likely model mistakes, or how to do these efficiently (i.e., without experimentally feeding the model new data and observing its response).
+\item It may be difficult for users to select or construct appropriate features. Many real-world applications cannot be built easily from raw data, but rather require some processing of the data in order for learning to be possible. For instance, building new interactions with sensors may require smoothing, segmentation, or analysis of statistics over time windows. Such feature engineering can be difficult even for users with programming and signal processing expertise. 
+\item It may be difficult to collecting appropriate training data and understand this data, especially when the user's goal is to build a system that generalises well to new users or environments whose data he/she cannot easily replicate for training or testing.
+\item It may be difficult for end users to connect machine learning tools to other tools of interest (e.g., existing systems for home automation, music, activity sensors, etc.) Existing sensors, hardware, and software may not use interoperable or open communication protocols.
+\item Not all designs a user might imagine will be learnable with the available algorithms, features, and data. Users may struggle to understand what is learnable and what is not.
+\end{itemize}
+
+%MZ: This paragraph needs a Patel citation and the TODO needs DO-ing 
+
+%FB DONE
+
+\subsection{IML can also be useful for professional developers} Even when the ``end user'' interacts with a pre-trained intelligent system, the user experience of the developer deserves consideration. Both the set of supported learning algorithms and user interfaces for employing those algorithms impact the developer experience. Just as with end-user development, IML can allow developers to build new systems by demonstration. This can result in a faster development process. When the goal is to build a system that responds to embodied interaction (e.g., human actions sensed with sensors), IML can also result in systems that respond more accurately to the desired interactions.
+
+Improving the interfaces used by developers can make the process of training machine learning-based systems more efficient and effective (e.g., \cite{patel2010gestalt,amershi2015modeltracker}). The developer/designer often encounters the same challenges identified for end users above. Furthermore, the developer/designer may also have to deal with a wider range of choices of algorithm types. Different types of algorithms afford different end user interactions (e.g., considering sensor analysis: classification, regression, and temporal modelling such as HMM all enable different modes of end user interaction. Variants of these algorithms have also been designed specifically to support interactive training or new types of user interaction (e.g., hierarchical HMMs \cite{franccoise2014probabilistic}). Designers/developers may also struggle with feature engineering, even though they may have more signal processing and programming expertise. They may also encounter substantial challenges in understanding and cleaning training datasets collected from target users. 
+
+Another significant challenge is that designers of intelligent systems that allow end-user customisation further must choose which interactions to expose to end users and how to expose them in a user interface. Amershi \citeyear{Amershi2012} argues that there are a lack of established principles and proven techniques for designing interaction with machine learning, and that knowledge should advance from ad-hoc solutions into generalized understanding about the IML process.
+
+%RF: Not sure what this paragraph is saying. 
+%FB Must say what ModelTracker - DONE.
+%RF: I don't think this paragraph fits the claim that "IML is important for developers, so I've removed it. I've also cited it above alongside other develoepr tools.
+%Amershi et al. \citeyear{amershi2015modeltracker} conducted an experiment for six months with ML practitioners that used ModelTracker for building real models for research and product deployment. ModelTracker provides an interactive visualization that allows for performance analysis during model building and also enables error inspection and debugging. ModelTracker aggregates traditional summary statistics and graphs, for conveying model performance, with performance metrics in the same visualization. The usage analysis of the six-month logs of the study demonstrated that ModelTracker was adopted over some of the current tools for performance analysis and debugging. %RF: I"m not sure what this paragraph tells us
+
+\subsection{IML can support user-centred design.} 
+Typically, user-centred design (UCD) activities involve iterative cycles of  working with users to identify design directions, implementing prototype designs, and getting feedback on those designs from users. IML offers a way to accelerate this iteration for the design of systems that respond to human gestures or actions, or to other events that can be easily simulated or demonstrated by end users. Training examples can be collected directly from user demonstrations and used to instantiate new designs on the spot, which can then be used to elicit feedback. Or, developers can translate observations of users in UCD activities into training examples for the developed system. We have previously used both approaches to develop new gestural musical instruments for people with disabilities \cite{katan2015using}.
+
+%RF: Do we want to say anyting else about the scope of projects for which this is applicable? Or the challenges that UCD leaders face in employing this approach? (TODO Francisco, michael, mick, look at this question.)
+
+%RF: I don't think this paragraph is relevant.
+%Fiebrink, Cook and Trueman \citeyear{fiebrink2011human} explore the interactions of users with machine learning in the context of compositional and music practices. Music students used Wekinator, a general-purpose standalone application for applying machine learning, which provides a high-level interface to supervised learning algorithms and parameters. It enables users to rapidly create and edit datasets, to train and run models in real time. Students learned to train, to recognize noise in the samples and to refine the training data set to obtain a more effective classifier, iterating consistently through designs. Fiebrink et al. observed that musicians trained their musical instruments and simultaneously, became trained on the interactive nature of Wekinator. Also Fiebrink et al. found that users preferred direct model evaluation to more typical methods, such as cross-validation. 
+
+\subsection{User-centred design should be applied to IML \& CML} 
+User-centred design can and should be applied to understanding and improving usability of interactive and classical machine learning, by both end users and developers. The challenges enumerated in the sections above cannot be met by algorithmic or technical innovation alone. Rather, meeting these challenges requires understanding of users' practices and goals. UCD processes have been used in much of the work described above (e.g., \cite{fiebrink2010toward,patel2010gestalt,amershi2014power}) to motivate the utility of machine learning systems and improve their usability and effectiveness. 
+
+Amershi et al. \citeyear{amershi2014power} highlight the importance of studying users of machine learning applications based on the tighter link that is established between learning systems and their users. They found that end users' goals had a significant impact on the success of the functionality that was designed for and provided by the system. The considerations about whether end users wanted to train an accurate or reusable model, or whether they were interacting directly with machine learning, for instance, evidenced the need for different design requirements, such as providing a greater or lesser number of alternative mechanisms for system feedback and end user control, different levels of guidance, and of complexity in explanations about the quality of the model.
+
+We argue that these questions are still relevant even when the ``interface'' employed by the user is a software API, as is the case with many developers who are embedding machine learning into new systems. Some existing research considers the user experience of programming languages, IDEs, and APIs (e.g., \cite{ko2011role}), but future work should consider the challenges that are unique to working with machine learning.
+
+\section{RAPID-MIX}
+%TODO RF: Tools can be APIs
+We are currently participating in a large research project involving the application of UCD methodologies to two groups of users---end users and developers---to improve tools for applying machine learning and, by extension, the interactive systems built with these tools. \textit{Real-time Adaptive Prototyping for Industrial Design of Multimodal Interactive and eXpressive technologies} (RAPID-MIX) is an Innovation Action funded by the European Commission under the Horizon 2020 program. The RAPID-MIX consortium aims to accelerate the production of the next generation of ``MIX" technologies by producing hardware and software tools for rapid prototyping and product development and placing them in the hands of end users in the form of a User Innovation Toolkit (Flowers, von Hippel, De Jong and Sinozic \citeyear{flowers2010measuring}) . 
+
+The members of the RAPID-MIX consortium, which include three European research labs and five creative small and medium enterprises (SMEs), have established research portfolios in the design and evaluation of embodied and wearable human-computer interfaces for creative and music technology. We have also developed and accumulated a significant portfolio of technologies for multimodal and expressive interaction, which includes tools for IML, music information retrieval and digital signal processing, as well as cloud-based repositories for storing and visualizing audiovisual and multimodal data.
+
+To facilitate the design of new tools for end users and developers to employ machine learning, we have developed a UCD framework that provides a set of guidelines for engaging in UCD research actions. These \textit{UCD actions} attempt to answer and refine key questions throughout the project life-cycle. As part of our development effort, we have performed multiple UCD actions such as:
+\begin{itemize}
+\item Co-design workshops with academic and SME project partners, 2015
+\item Hack-a-thons and innovation challenges at Sonar Festival in Barcelona, 2015 \& 2016
+\item Workshops and interviews at Maker Faires in Lisbon and Rome, 2015
+\end{itemize}
+These UCD actions contributed to define the design space of the toolkit based on insights that were obtained from:
+\begin{itemize}
+\item assessing and aligning the consortium partners' thinking through ideation, identification of scenarios and design challenges
+\item probing the users with early technologies
+\item prototyping the integration of these technologies
+\item defining an initial set of target users and contexts of use, and evolving gradually to a more scoped definition based on user engagement
+\item gathering of direct insights from the future end users of the toolkit
+\end{itemize}
+
+Most importantly, we were able to deploy our technology probes and prototypes with users that fitted this composite and gradually scoped profile, and obtain feedback from them. The effort of intertwining several rounds of rapid prototype development with user engagement uncovered design problems and specific challenges for the RAPID-MIX consortium. The results of these actions informed the design of the toolkit, allowing it to fulfil the needs, goals and values of prospective users. 
+
+%RF: At this point I am a little confused-- nothing has been said about *what* has been learned from RAPID-MIX UCD actions, or how RAPID-MIX has informed the rest of the paper, or what we have learned about challenges/best practices for applying UCD to the design of ML tools. What is the takeaway here? This may also be a good place to reinforce the fact that APIs are tools, and as such we should consider the user experience of these tools.
+%TODO: Francsico, Michael, Mick
+
+Reports on our UCD methodologies and our design guidelines can be found on our website at: http://rapidmix.goldsmithsdigital.com/downloads/
+
+\section{Conclusion} 
+We have argued that IML can enable people (including both end users and developers) to customize interactive systems and can support user-centred design. Furthermore, UCD can and should be applied to the process of creating machine learning applications of all kinds. These positions are informed by, and inform the RAPID-MIX project, which is ongoing. By engaging with members of the user experience design, service design, HCI, HRI and AI communities at this particular AAAI Symposium, we hope to connect with complementary perspectives and potential users of our toolkit and use that feedback in our next cycle of design and prototyping.
+
+\section{Acknowledgements}
+The work reported here was supported in part by RAPID-MIX, an EU Horizon 2020 Innovation Action: H2020-ICT-2014-1 Project ID: 644862.
+
+\bibliographystyle{aaai}
+\bibliography{bib}
+
+\end{document}
